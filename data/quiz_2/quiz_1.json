@@ -1,0 +1,170 @@
+{
+    "quiz_1": [
+      {
+        "title": "Quiz 1",
+        "questions": [
+          {
+            "question": "Γράψτε μία συνάρτηση που υπολογίζει τη n-οστή τιμή του Fibonacci χρησιμοποιώντας αναδρομή. Ποια είναι η σωστή απάντηση;",
+            "options": [
+              "return fibonacci(n-1) + fibonacci(n-2)",
+              "return n * fibonacci(n-1)",
+              "return fibonacci(n) - fibonacci(n-1)",
+              "return n + fibonacci(n-1)"
+            ],
+            "correctAnswer": "return fibonacci(n-1) + fibonacci(n-2)"
+          },
+          {
+            "question": "Ποιο από τα παρακάτω είναι το πρώτο βήμα για την ταξινόμηση QuickSort;",
+            "options": [
+              "Επιλέγουμε ένα pivot και χωρίζουμε τα δεδομένα",
+              "Ταξινομούμε όλα τα δεδομένα με αύξουσα σειρά.",
+              "Συγκρίνουμε όλα τα στοιχεία με το pivot.",
+              "Υπολογίζουμε τη μέση τιμή όλων των δεδομένων."
+            ],
+            "correctAnswer": "Επιλέγουμε ένα pivot και χωρίζουμε τα δεδομένα"
+          },
+          {
+            "question": "Ποιος είναι ο σωστός τρόπος για να υπολογίσετε την ένωση δύο συνόλων Python;",
+            "options": [
+              "set1.union(set2)",
+              "set1 & set2",
+              "set1 - set2",
+              "set1 + set2"
+            ],
+            "correctAnswer": "set1.union(set2)"
+          },
+          {
+            "question": "Πώς μετατρέπουμε έναν αριθμό σε δυαδική μορφή στην Python;",
+            "options": [
+              "bin(n)",
+              "to_binary(n)",
+              "binary(n)",
+              "convert_to_bin(n)"
+            ],
+            "correctAnswer": "bin(n)"
+          },
+          {
+            "question": "Πώς διαβάζουμε δεδομένα από ένα αρχείο CSV στην Python;",
+            "options": [
+              "csv.reader()",
+              "csv.open()",
+              "csv.load()",
+              "csv.data_reader()"
+            ],
+            "correctAnswer": "csv.reader()"
+          }
+        ]
+      },
+      {
+        "title": "Quiz 2",
+        "questions": [
+          {
+            "question": "Γράψτε έναν αλγόριθμο που επιστρέφει τα κοινά στοιχεία δύο λιστών.",
+            "options": [
+              "set(list1) & set(list2)",
+              "list1 + list2",
+              "set(list1).union(set(list2))",
+              "set(list1).difference(set(list2))"
+            ],
+            "correctAnswer": "set(list1) & set(list2)"
+          },
+          {
+            "question": "Ποιο είναι το αποτέλεσμα της πράξης 3 ** 3 στην Python;",
+            "options": [
+              "27",
+              "9",
+              "81",
+              "6"
+            ],
+            "correctAnswer": "27"
+          },
+          {
+            "question": "Πώς διαγράφουμε ένα κλειδί από ένα λεξικό στην Python;",
+            "options": [
+              "del my_dict['key']",
+              "my_dict.remove('key')",
+              "delete my_dict['key']",
+              "my_dict.pop('key')"
+            ],
+            "correctAnswer": "del my_dict['key']"
+          },
+          {
+            "question": "Ποια είναι η σωστή μέθοδος για να προσθέσετε ένα στοιχείο σε μία λίστα;",
+            "options": [
+              "my_list.append(value)",
+              "my_list.add(value)",
+              "my_list.push(value)",
+              "my_list.insert(value)"
+            ],
+            "correctAnswer": "my_list.append(value)"
+          },
+          {
+            "question": "Πώς αντιγράφουμε ένα λεξικό στην Python;",
+            "options": [
+              "my_dict.copy()",
+              "copy(my_dict)",
+              "my_dict.duplicate()",
+              "dict.copy(my_dict)"
+            ],
+            "correctAnswer": "my_dict.copy()"
+          }
+        ]
+      },
+      {
+        "title": "Quiz 3",
+        "questions": [
+          {
+            "question": "Ποιος είναι ο σωστός τρόπος να ανοίξετε ένα αρχείο για ανάγνωση στην Python;",
+            "options": [
+              "open('file.txt', 'r')",
+              "read('file.txt')",
+              "file.open('file.txt')",
+              "open('file.txt', 'read')"
+            ],
+            "correctAnswer": "open('file.txt', 'r')"
+          },
+          {
+            "question": "Ποιο είναι το αποτέλεσμα της εντολής `len('Python')`;",
+            "options": [
+              "6",
+              "5",
+              "7",
+              "8"
+            ],
+            "correctAnswer": "6"
+          },
+          {
+            "question": "Ποια μέθοδος χρησιμοποιείται για να μετατρέψουμε ένα string σε κεφαλαία γράμματα;",
+            "options": [
+              "string.upper()",
+              "string.toUpper()",
+              "string.capitalize()",
+              "string.toUpperCase()"
+            ],
+            "correctAnswer": "string.upper()"
+          },
+          {
+            "question": "Πώς ελέγχουμε αν μία λίστα είναι κενή στην Python;",
+            "options": [
+              "if not my_list",
+              "if len(my_list) == None",
+              "if my_list == ''",
+              "if my_list.empty()"
+            ],
+            "correctAnswer": "if not my_list"
+          },
+          {
+            "question": "Πώς μπορούμε να αντιστρέψουμε μία λίστα στην Python;",
+            "options": [
+              "my_list[::-1]",
+              "reverse(my_list)",
+              "my_list.revert()",
+              "my_list[-1]"
+            ],
+            "correctAnswer": "my_list[::-1]"
+          }
+        ]
+      }
+    ]
+  }
+  
