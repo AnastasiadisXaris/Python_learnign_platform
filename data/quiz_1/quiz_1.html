@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz 1 — Python Playground</title>
+  <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <link rel="stylesheet" href="../quiz.css">
+  <script defer src="../../../assets/js/main.js"></script>
+</head>
+<body>
+  <div class="quiz-shell">
+    <div class="quiz-card">
+      <div class="quiz-card__top">
+        <h1>Κουίζ Προγραμματισμού · Quiz 1</h1>
+        <span id="quiz-progress"></span>
+      </div>
+      <button id="back-btn" class="btn btn--ghost btn--sm" style="margin-bottom:18px;">← Επιστροφή</button>
+
+      <div id="question-container">Φόρτωση…</div>
+      <div id="options-container"></div>
+      <button id="submit-btn" class="btn btn--primary">Υποβολή Απάντησης</button>
+      <div id="feedback-container" class="quiz-feedback"></div>
+    </div>
+  </div>
+
+  <script>
+    window.QUIZ_CONFIG = {
+      file: "quiz_1.json",
+      key: "quiz_1",
+      backHref: "../../../quizzes.html?level=panepistimio",
+    };
+  </script>
+  <script src="../quiz-runner.js"></script>
+</body>
+</html>
