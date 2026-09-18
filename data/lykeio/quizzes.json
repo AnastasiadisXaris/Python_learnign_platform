@@ -1,0 +1,59 @@
+{
+  "quizzes": [
+    {
+      "title": "Μάθημα 1",
+      "description": "Εισαγωγή στην Python",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-quizzes-1"
+    },
+    {
+      "title": "Μάθημα 2",
+      "description": "Βασικές Έννοιες Προγραμματισμού",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-quizzes-2"
+    },
+    {
+      "title": "Μάθημα 3",
+      "description": "Απλές Δομές Ελέγχου",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-quizzes-3"
+    },
+    {
+      "title": "Μάθημα 4",
+      "description": "Βασικές Συναρτήσεις και Αριθμητικές Πράξεις",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-quizzes-4"
+    },
+    {
+      "title": "Μάθημα 5",
+      "description": "Παιχνίδια και Διαδραστικά Σενάρια",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-quizzes-5"
+    }
+  ]
+}

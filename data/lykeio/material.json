@@ -1,0 +1,59 @@
+{
+  "materials": [
+    {
+      "title": "Μάθημα 1",
+      "description": "Δομημένος Προγραμματισμός",
+      "image": "assets/img/teacher.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-material-1"
+    },
+    {
+      "title": "Μάθημα 2",
+      "description": "Δομές Δεδομένων και Αλγόριθμοι",
+      "image": "assets/img/teacher.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-material-2"
+    },
+    {
+      "title": "Μάθημα 3",
+      "description": "Αρχές Οπτικού Προγραμματισμού",
+      "image": "assets/img/teacher.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-material-3"
+    },
+    {
+      "title": "Μάθημα 4",
+      "description": "Αρχεία και Δεδομένα",
+      "image": "assets/img/teacher.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-material-4"
+    },
+    {
+      "title": "Μάθημα 5",
+      "description": "Εργασία σε Ομάδες και Έργα",
+      "image": "assets/img/teacher.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "lykeio-material-5"
+    }
+  ]
+}
