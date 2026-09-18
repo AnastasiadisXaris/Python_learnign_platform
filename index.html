@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Playground</title>
+  <meta name="description" content="Εκπαιδευτική πλατφόρμα για την εκμάθηση της Python — Γυμνάσιο, Λύκειο, Πανεπιστήμιο.">
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/progress.js"></script>
+  <script defer src="assets/js/content.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav__path">
+        <span class="brand-mark">python-playground</span>
+      </div>
+      <div class="nav__actions">
+        <select class="level-select" id="quick-level-select" aria-label="Μετάβαση σε βαθμίδα">
+          <option value="">Βαθμίδα…</option>
+          <option value="gymnasio">Γυμνάσιο</option>
+          <option value="lykeio">Λύκειο</option>
+          <option value="panepistimio">Πανεπιστήμιο</option>
+        </select>
+        <button class="icon-btn" id="theme-toggle" aria-label="Εναλλαγή θέματος">🌙</button>
+        <a class="btn btn--ghost btn--sm" href="https://anastasiadisxaris.github.io/Anastasiadis_portofolio/" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero__grid">
+        <div>
+          <p class="hero__eyebrow"># μάθε Python γράφοντας Python</p>
+          <h1>Python Playground</h1>
+          <p class="hero__lede">Υλικό, quizzes και ένα πραγματικό περιβάλλον εκτέλεσης κώδικα — οργανωμένα σε τρεις βαθμίδες, από το πρώτο <code>print()</code> μέχρι αναδρομή και δομές δεδομένων.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#levels">Ξεκίνα τώρα</a>
+            <a class="btn btn--ghost" href="level.html?level=panepistimio">Στο περιβάλλον εξάσκησης →</a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+            <span class="terminal__title">playground.py</span>
+          </div>
+          <div class="terminal__body" id="terminal-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="levels">
+      <div class="section-head">
+        <h2>Διάλεξε βαθμίδα</h2>
+        <p>Κάθε βαθμίδα έχει δικό της υλικό, quizzes και ασκήσεις.</p>
+      </div>
+
+      <div class="level-grid">
+        <a class="level-card" style="--lvl: var(--gymnasio)" href="level.html?level=gymnasio">
+          <p class="level-card__path">/levels/gymnasio</p>
+          <h3 class="level-card__title">Γυμνάσιο</h3>
+          <p class="level-card__desc">Πρώτα βήματα: μεταβλητές, εκτυπώσεις, απλές δομές ελέγχου.</p>
+          <div class="level-card__foot">
+            <div class="progress-bar" style="--lvl: var(--gymnasio)"><div class="progress-bar__fill" style="width:0%"></div></div>
+            <span class="level-card__pct">0%</span>
+          </div>
+        </a>
+
+        <a class="level-card" style="--lvl: var(--lykeio)" href="level.html?level=lykeio">
+          <p class="level-card__path">/levels/lykeio</p>
+          <h3 class="level-card__title">Λύκειο</h3>
+          <p class="level-card__desc">Συναρτήσεις, λίστες, λογική προγραμμάτων και αλγοριθμική σκέψη.</p>
+          <div class="level-card__foot">
+            <div class="progress-bar" style="--lvl: var(--lykeio)"><div class="progress-bar__fill" style="width:0%"></div></div>
+            <span class="level-card__pct">0%</span>
+          </div>
+        </a>
+
+        <a class="level-card" style="--lvl: var(--panepistimio)" href="level.html?level=panepistimio">
+          <p class="level-card__path">/levels/panepistimio</p>
+          <h3 class="level-card__title">Πανεπιστήμιο</h3>
+          <p class="level-card__desc">Αναδρομή, ταξινομήσεις, σύνολα και διαδραστικά quiz κώδικα.</p>
+          <div class="level-card__foot">
+            <div class="progress-bar" style="--lvl: var(--panepistimio)"><div class="progress-bar__fill" style="width:0%"></div></div>
+            <span class="level-card__pct">0%</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <div class="panel">
+        <h3>Πώς δουλεύει η εξάσκηση</h3>
+        <p>Το «Περιβάλλον Εξάσκησης» τρέχει πραγματική Python μέσα στον browser σου (μέσω Pyodide) — χωρίς εγκατάσταση, χωρίς server. Γράφεις κώδικα, πατάς «Εκτέλεση» και βλέπεις άμεσα το αποτέλεσμα.</p>
+      </div>
+      <div class="panel">
+        <h3>Χρήσιμοι σύνδεσμοι</h3>
+        <ul class="link-list">
+          <li><a href="https://python.org" target="_blank" rel="noopener noreferrer"><span class="arrow">→</span> Python.org</a></li>
+          <li><a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer"><span class="arrow">→</span> W3Schools</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer"><span class="arrow">→</span> Stack Overflow</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Python Playground</span>
+      <a href="https://anastasiadisxaris.github.io/Anastasiadis_portofolio/" target="_blank" rel="noopener noreferrer">Anastasiadis Xaris</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      typeTerminal(document.getElementById("terminal-output"), [
+        { text: "# καλωσήρθες στο Python Playground" },
+        { text: "def learn(level):" },
+        { text: "    return \"γεια σου, κόσμε! 🚀\"" },
+        { text: "" },
+        { text: "print(learn(\"gymnasio\"))" },
+      ]);
+
+      const select = document.getElementById("quick-level-select");
+      select.addEventListener("change", () => {
+        if (select.value) window.location.href = levelHref("level.html", select.value);
+      });
+
+      const totals = {}; // γεμίζει async παρακάτω
+      ["gymnasio", "lykeio", "panepistimio"].forEach(async (level) => {
+        const [mat, quiz, exer] = await Promise.all([
+          fetch(`data/${level}/material.json`).then(r => r.json()).catch(() => ({materials: []})),
+          fetch(`data/${level}/quizzes.json`).then(r => r.json()).catch(() => ({quizzes: []})),
+          fetch(`data/${level}/exercises.json`).then(r => r.json()).catch(() => ({exercises: []})),
+        ]);
+        const t = {
+          material: (mat.materials || []).length,
+          quizzes: (quiz.quizzes || []).length,
+          exercises: (exer.exercises || []).length,
+        };
+        const pct = Progress.levelPercent(level, t);
+        const card = document.querySelector(`a[href^="level.html?level=${level}"]`);
+        if (card) {
+          card.querySelector(".progress-bar__fill").style.width = pct + "%";
+          card.querySelector(".level-card__pct").textContent = pct + "%";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

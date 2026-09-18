@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Βαθμίδα — Python Playground</title>
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/progress.js"></script>
+  <script defer src="assets/js/content.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav__path" data-breadcrumb></div>
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Εναλλαγή θέματος">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="level-hero">
+      <p class="level-hero__badge" id="level-badge" style="--lvl:var(--accent)"></p>
+      <h1 id="level-title">—</h1>
+      <p id="level-desc"></p>
+      <div class="level-progress" id="level-progress-bar" data-progress-for="">
+        <div class="progress-bar"><div class="progress-bar__fill" style="width:0%"></div></div>
+        <span class="level-progress__label">0% ολοκληρωμένα</span>
+      </div>
+    </section>
+
+    <div class="module-grid">
+      <a class="module-card" id="card-material" href="#">
+        <img src="assets/img/book-stack.png" alt="">
+        <h3>Εκπαιδευτικό Υλικό</h3>
+        <p>Μαθήματα, PDF, βίντεο και διαδραστικό υλικό.</p>
+        <span class="module-card__meta" id="meta-material">— στοιχεία</span>
+      </a>
+      <a class="module-card" id="card-quizzes" href="#">
+        <img src="assets/img/quizzes.png" alt="">
+        <h3>Quizzes</h3>
+        <p>Ελέγξτε τις γνώσεις σας με ερωτήσεις ανά ενότητα.</p>
+        <span class="module-card__meta" id="meta-quizzes">— στοιχεία</span>
+      </a>
+      <a class="module-card" id="card-exercises" href="#">
+        <img src="assets/img/programming.png" alt="">
+        <h3>Περιβάλλον Εξάσκησης</h3>
+        <p>Γράψε και τρέξε πραγματικό κώδικα Python στον browser.</p>
+        <span class="module-card__meta" id="meta-exercises">— ασκήσεις</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Python Playground</span>
+      <a href="index.html">← Πίσω στην αρχική</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const level = getLevelFromURL();
+      if (!level) { window.location.href = "index.html"; return; }
+      const meta = LEVELS[level];
+
+      document.title = `${meta.label} — Python Playground`;
+      document.getElementById("level-badge").textContent = `/levels/${level}`;
+      document.getElementById("level-badge").style.setProperty("--lvl", meta.color);
+      document.getElementById("level-title").textContent = `Καλωσήρθατε στο ${meta.label}`;
+      document.getElementById("level-desc").textContent =
+        "Περιηγηθείτε στις ενότητες παρακάτω και συνεχίστε από εκεί που σταματήσατε.";
+
+      renderBreadcrumb([
+        { label: "python-playground", href: "index.html" },
+        { label: meta.label },
+      ]);
+
+      ["material", "quizzes", "exercises"].forEach((cat) => {
+        document.getElementById(`card-${cat}`).href = levelHref(`${cat}.html`, level);
+      });
+
+      const [mat, quiz, exer] = await Promise.all([
+        fetch(`data/${level}/material.json`).then(r => r.json()).catch(() => ({materials: []})),
+        fetch(`data/${level}/quizzes.json`).then(r => r.json()).catch(() => ({quizzes: []})),
+        fetch(`data/${level}/exercises.json`).then(r => r.json()).catch(() => ({exercises: []})),
+      ]);
+      const totals = {
+        material: (mat.materials || []).length,
+        quizzes: (quiz.quizzes || []).length,
+        exercises: (exer.exercises || []).length,
+      };
+      document.getElementById("meta-material").textContent = `${totals.material} μαθήματα`;
+      document.getElementById("meta-quizzes").textContent = `${totals.quizzes} ομάδες quiz`;
+      document.getElementById("meta-exercises").textContent = `${totals.exercises} ασκήσεις`;
+
+      const bar = document.getElementById("level-progress-bar");
+      bar.dataset.progressFor = level;
+      bar.dataset.totals = JSON.stringify(totals);
+      updateLevelProgressUI(level);
+    });
+  </script>
+</body>
+</html>

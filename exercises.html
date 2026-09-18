@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Περιβάλλον Εξάσκησης — Python Playground</title>
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- CodeMirror: editor με syntax highlighting για Python -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+
+  <!-- Pyodide: εκτέλεση πραγματικής Python μέσα στον browser -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.2/full/pyodide.js"></script>
+
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/progress.js"></script>
+  <script defer src="assets/js/content.js"></script>
+  <script defer src="assets/js/exercises.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav__path" data-breadcrumb></div>
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Εναλλαγή θέματος">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <h1>Περιβάλλον Εξάσκησης</h1>
+      <p>Διάλεξε μία άσκηση αριστερά, γράψε τον κώδικά σου και πάτησε «Εκτέλεση».</p>
+    </div>
+
+    <div class="ide">
+      <aside class="ide__sidebar">
+        <p class="ide__sidebar-head">ΑΣΚΗΣΕΙΣ</p>
+        <div id="ide-sidebar-list">
+          <div class="exercise-loading">Φόρτωση…</div>
+        </div>
+      </aside>
+
+      <section class="ide__main">
+        <div class="ide__prompt">
+          <h2 id="ide-question">Φόρτωση άσκησης…</h2>
+          <p class="ide__hint" id="ide-hint"></p>
+        </div>
+
+        <div class="editor-toolbar">
+          <span class="editor-toolbar__label">editor.py</span>
+          <div class="editor-toolbar__actions">
+            <button class="btn btn--ghost btn--sm" id="mark-done-btn">✓ Σήμανση ως ολοκληρωμένη</button>
+            <button class="btn btn--signal btn--sm" id="run-btn" disabled>Φόρτωση Python…</button>
+          </div>
+        </div>
+
+        <div class="editor-wrap">
+          <textarea id="editor"></textarea>
+        </div>
+
+        <div class="console">
+          <p class="console__label">ΕΞΟΔΟΣ</p>
+          <div class="console__body is-empty" id="console-body">Η έξοδος θα εμφανιστεί εδώ...</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Python Playground</span>
+      <a href="#" onclick="goBack(); return false;">← Πίσω</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const level = getLevelFromURL();
+      if (!level) { window.location.href = "index.html"; return; }
+      const meta = LEVELS[level];
+      document.title = `Περιβάλλον Εξάσκησης — ${meta.label}`;
+
+      renderBreadcrumb([
+        { label: "python-playground", href: "index.html" },
+        { label: meta.label, href: levelHref("level.html", level) },
+        { label: "exercises" },
+      ]);
+
+      initExercises(level);
+    });
+  </script>
+</body>
+</html>

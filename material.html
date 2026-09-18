@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Εκπαιδευτικό Υλικό — Python Playground</title>
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/progress.js"></script>
+  <script defer src="assets/js/content.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav__path" data-breadcrumb></div>
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Εναλλαγή θέματος">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <h1>Εκπαιδευτικό Υλικό</h1>
+      <p>Ανοίξτε ένα μάθημα για να δείτε το διαθέσιμο υλικό (PDF, βίντεο, διαδραστικό).</p>
+    </div>
+
+    <div class="content-list" id="content-list">
+      <div class="exercise-loading">Φόρτωση υλικού…</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Python Playground</span>
+      <a href="#" onclick="goBack(); return false;">← Πίσω</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const level = getLevelFromURL();
+      if (!level) { window.location.href = "index.html"; return; }
+      const meta = LEVELS[level];
+      document.title = `Εκπαιδευτικό Υλικό — ${meta.label}`;
+
+      renderBreadcrumb([
+        { label: "python-playground", href: "index.html" },
+        { label: meta.label, href: levelHref("level.html", level) },
+        { label: "material" },
+      ]);
+
+      loadContentList({
+        level,
+        category: "material",
+        file: "material.json",
+        jsonKey: "materials",
+        containerId: "content-list",
+      });
+    });
+  </script>
+</body>
+</html>
