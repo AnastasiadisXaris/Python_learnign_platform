@@ -1,0 +1,459 @@
+/* ==========================================================================
+   Python Playground — design system
+   Ένα ενιαίο αρχείο στυλ για όλη την πλατφόρμα (tokens + βασικά + components)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  /* --- Χρώματα (dark, default) --- */
+  --bg: #12161d;
+  --bg-soft: #0d1015;
+  --surface: #1b212b;
+  --surface-2: #232b37;
+  --border: #2c3444;
+  --text: #e9edf3;
+  --text-muted: #98a2b6;
+  --text-faint: #667089;
+
+  --accent: #f2a93b;
+  --accent-strong: #ffc262;
+  --accent-ink: #241403;
+  --signal: #48d6ae;
+  --signal-ink: #052d22;
+  --danger: #ff7a7a;
+  --danger-ink: #340a0a;
+
+  --gymnasio: #6fa8ff;
+  --lykeio: #c792ea;
+  --panepistimio: #48d6ae;
+
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --shadow: 0 16px 40px rgba(0,0,0,.38);
+  --shadow-soft: 0 8px 20px rgba(0,0,0,.28);
+
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  color-scheme: dark;
+}
+
+html[data-theme="light"]{
+  --bg: #eef1f6;
+  --bg-soft: #e4e8f0;
+  --surface: #ffffff;
+  --surface-2: #f6f7fb;
+  --border: #dde2eb;
+  --text: #1a2130;
+  --text-muted: #5b6478;
+  --text-faint: #8991a3;
+
+  --accent: #d98b1c;
+  --accent-strong: #b8760f;
+  --accent-ink: #fff8ec;
+  --signal: #16966f;
+  --signal-ink: #ecfff8;
+  --danger: #d9433f;
+  --danger-ink: #fff2f1;
+
+  --shadow: 0 16px 40px rgba(30,40,70,.10);
+  --shadow-soft: 0 8px 20px rgba(30,40,70,.08);
+
+  color-scheme: light;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before{
+  /* διακριτική "grid" υφή φόντου, ήσυχη και όχι διάχυτη */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 40%),
+    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--signal) 10%, transparent), transparent 42%);
+}
+
+img{ max-width: 100%; display: block; }
+a{ color: inherit; }
+h1,h2,h3,h4{ font-family: var(--font-display); font-weight: 600; margin: 0 0 .5em; letter-spacing: -.01em; }
+p{ margin: 0 0 1em; color: var(--text-muted); }
+code, pre, .mono{ font-family: var(--font-mono); }
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+.wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* ==========================================================================
+   Header / navigation — path-style breadcrumb, όπως directory στο terminal
+   ========================================================================== */
+.site-header{
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 14px 24px; max-width: 1080px; margin: 0 auto;
+}
+.nav__path{
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: .92rem;
+  color: var(--text-muted);
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.nav__path a{ text-decoration: none; color: var(--text); }
+.nav__path a:hover{ color: var(--accent); }
+.nav__path .sep{ color: var(--text-faint); }
+.nav__path .brand-mark{ color: var(--accent); font-weight: 600; }
+.nav__path .current{ color: var(--text-muted); }
+
+.nav__actions{ display: flex; align-items: center; gap: 10px; }
+
+.level-select{
+  font-family: var(--font-mono);
+  font-size: .86rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  padding: 7px 10px;
+}
+
+.icon-btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease;
+  font-size: 1rem;
+}
+.icon-btn:hover{ border-color: var(--accent); transform: translateY(-1px); }
+
+/* ==========================================================================
+   Κουμπιά
+   ========================================================================== */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: .95rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn--primary{ background: var(--accent); color: var(--accent-ink); }
+.btn--primary:hover{ background: var(--accent-strong); box-shadow: var(--shadow-soft); }
+.btn--signal{ background: var(--signal); color: var(--signal-ink); }
+.btn--signal:hover{ box-shadow: var(--shadow-soft); }
+.btn--ghost{ background: transparent; color: var(--text); border-color: var(--border); }
+.btn--ghost:hover{ border-color: var(--accent); color: var(--accent); }
+.btn--sm{ padding: 8px 14px; font-size: .86rem; }
+.btn[disabled]{ opacity: .5; cursor: not-allowed; transform: none !important; }
+
+/* ==========================================================================
+   Hero terminal — η "χαρακτηριστική στιγμή" της αρχικής σελίδας
+   ========================================================================== */
+.hero{ padding: 64px 0 40px; }
+.hero__grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+.hero__eyebrow{ font-family: var(--font-mono); color: var(--signal); font-size: .92rem; margin-bottom: 14px; }
+.hero h1{ font-size: clamp(2.1rem, 4.2vw, 3.2rem); line-height: 1.08; margin-bottom: .4em; }
+.hero__lede{ font-size: 1.08rem; max-width: 46ch; }
+.hero__cta{ display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+
+.terminal{
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.terminal__bar{
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.terminal__dot{ width: 11px; height: 11px; border-radius: 50%; background: var(--border); }
+.terminal__dot:nth-child(1){ background: #ff6159; }
+.terminal__dot:nth-child(2){ background: #ffbd2e; }
+.terminal__dot:nth-child(3){ background: #28c941; }
+.terminal__title{ margin-left: 8px; font-family: var(--font-mono); font-size: .8rem; color: var(--text-faint); }
+.terminal__body{
+  padding: 22px 20px 28px;
+  font-family: var(--font-mono);
+  font-size: .92rem;
+  min-height: 220px;
+}
+.terminal__line{ color: var(--text-muted); white-space: pre-wrap; }
+.terminal__line .kw{ color: #ff8fb1; }
+.terminal__line .fn{ color: var(--accent-strong); }
+.terminal__line .str{ color: var(--signal); }
+.terminal__line .cm{ color: var(--text-faint); }
+.terminal__prompt{ color: var(--accent); }
+.terminal__caret{
+  display: inline-block; width: 8px; height: 1.1em; background: var(--accent);
+  vertical-align: text-bottom; margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ==========================================================================
+   Βαθμίδες — κάρτες σε στυλ "φακέλου", λογικό γιατί το site είναι δομημένο
+   σαν directory ανά βαθμίδα/ενότητα
+   ========================================================================== */
+.section-head{ margin: 56px 0 22px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.section-head h2{ font-size: 1.5rem; }
+.section-head p{ margin: 0; }
+
+.level-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.level-card{
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--lvl, var(--accent));
+  border-radius: var(--radius-m);
+  padding: 22px 20px;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.level-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+.level-card__path{ font-family: var(--font-mono); font-size: .8rem; color: var(--lvl, var(--accent)); margin-bottom: 10px; }
+.level-card__title{ font-size: 1.25rem; margin-bottom: 6px; }
+.level-card__desc{ font-size: .92rem; margin-bottom: 16px; }
+.level-card__foot{ display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.level-card__pct{ font-family: var(--font-mono); font-size: .8rem; color: var(--text-muted); }
+
+.progress-bar{ height: 6px; border-radius: 4px; background: var(--surface-2); overflow: hidden; flex: 1; }
+.progress-bar__fill{ height: 100%; background: var(--lvl, var(--accent)); border-radius: 4px; transition: width .4s ease; }
+
+/* ==========================================================================
+   Χρήσιμοι σύνδεσμοι / γενικά cards
+   ========================================================================== */
+.info-grid{ display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px; margin-top: 18px; }
+.panel{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+  padding: 22px 24px; box-shadow: var(--shadow-soft);
+}
+.panel h3{ font-size: 1.05rem; }
+.link-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.link-list a{ text-decoration: none; color: var(--text); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.link-list a:hover{ color: var(--accent); }
+.link-list .arrow{ color: var(--text-faint); }
+
+/* ==========================================================================
+   Level hub (Υλικό / Quizzes / Εξάσκηση)
+   ========================================================================== */
+.level-hero{ padding: 42px 0 8px; }
+.level-hero__badge{ font-family: var(--font-mono); font-size: .82rem; color: var(--lvl, var(--accent)); }
+.level-hero h1{ font-size: clamp(1.8rem, 3.4vw, 2.5rem); }
+.level-progress{ display: flex; align-items: center; gap: 14px; max-width: 420px; margin-top: 18px; }
+.level-progress .progress-bar{ height: 8px; }
+.level-progress__label{ font-family: var(--font-mono); font-size: .82rem; color: var(--text-muted); white-space: nowrap; }
+
+.module-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 30px 0 56px; }
+.module-card{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+  padding: 26px 22px; text-decoration: none; color: var(--text);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.module-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow); }
+.module-card img{ width: 46px; height: 46px; object-fit: contain; }
+.module-card h3{ font-size: 1.15rem; margin: 4px 0 0; }
+.module-card p{ font-size: .9rem; margin: 0; }
+.module-card__meta{ margin-top: auto; font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+
+/* ==========================================================================
+   Λίστες περιεχομένου (Υλικό / Quizzes) — accordion cards
+   ========================================================================== */
+.content-list{ display: flex; flex-direction: column; gap: 12px; margin: 26px 0 60px; }
+.content-item{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+  overflow: hidden;
+}
+.content-item__head{
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 18px; cursor: pointer; background: none; border: none; width: 100%;
+  text-align: left; color: var(--text); font: inherit;
+}
+.content-item__num{
+  font-family: var(--font-mono); font-size: .82rem; color: var(--text-faint);
+  width: 28px; flex-shrink: 0;
+}
+.content-item__thumb{ width: 44px; height: 44px; border-radius: var(--radius-s); object-fit: cover; flex-shrink: 0; background: var(--surface-2); }
+.content-item__title{ font-weight: 600; margin: 0; }
+.content-item__desc{ margin: 2px 0 0; font-size: .88rem; color: var(--text-muted); }
+.content-item__chev{ margin-left: auto; color: var(--text-faint); transition: transform .2s ease; flex-shrink: 0; }
+.content-item.is-open .content-item__chev{ transform: rotate(180deg); }
+.content-item__check{ flex-shrink: 0; }
+
+.content-item__body{
+  max-height: 0; overflow: hidden; transition: max-height .25s ease;
+  border-top: 1px solid transparent;
+}
+.content-item.is-open .content-item__body{ border-top-color: var(--border); }
+.content-item__body-inner{ padding: 16px 18px 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.resource-chip{
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .86rem; text-decoration: none; color: var(--text);
+  background: var(--surface-2); border: 1px solid var(--border);
+  padding: 8px 14px; border-radius: 999px;
+  transition: border-color .15s ease, color .15s ease;
+}
+.resource-chip:hover{ border-color: var(--accent); color: var(--accent); }
+.empty-note{ color: var(--text-faint); font-size: .88rem; }
+
+.check-toggle{
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1.5px solid var(--border); background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: transparent; font-size: .85rem;
+  transition: all .15s ease;
+}
+.check-toggle:hover{ border-color: var(--signal); }
+.check-toggle.is-done{ background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+
+/* ==========================================================================
+   Περιβάλλον Εξάσκησης — IDE-style layout
+   ========================================================================== */
+.ide{
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 18px;
+  margin: 28px 0 60px;
+  align-items: start;
+}
+.ide__sidebar{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+  padding: 14px; max-height: 76vh; overflow-y: auto;
+}
+.ide__sidebar-head{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); padding: 6px 8px 12px; }
+.ide-item{
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px; border-radius: var(--radius-s);
+  cursor: pointer; font-size: .88rem;
+  border: 1px solid transparent;
+}
+.ide-item:hover{ background: var(--surface-2); }
+.ide-item.is-active{ background: var(--surface-2); border-color: var(--accent); }
+.ide-item__num{ font-family: var(--font-mono); color: var(--text-faint); font-size: .78rem; width: 18px; flex-shrink: 0; }
+.ide-item__label{ color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ide-item__dot{ margin-left: auto; width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.ide-item.is-done .ide-item__dot{ background: var(--signal); }
+
+.ide__main{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+  overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
+}
+.ide__prompt{ padding: 20px 22px 6px; }
+.ide__prompt h2{ font-size: 1.15rem; margin-bottom: 6px; }
+.ide__hint{ font-size: .88rem; color: var(--text-faint); }
+.ide__hint strong{ color: var(--text-muted); }
+
+.editor-toolbar{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  background: var(--surface-2); margin-top: 16px;
+}
+.editor-toolbar__label{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.editor-toolbar__actions{ display: flex; gap: 8px; align-items: center; }
+
+.editor-wrap{ position: relative; }
+.editor-wrap .CodeMirror{
+  height: 260px; font-family: var(--font-mono); font-size: .92rem;
+  background: var(--bg-soft); color: var(--text);
+}
+.CodeMirror-gutters{ background: var(--bg-soft) !important; border-right: 1px solid var(--border) !important; }
+.CodeMirror-linenumber{ color: var(--text-faint) !important; }
+.CodeMirror-cursor{ border-left: 1.5px solid var(--accent) !important; }
+
+.console{
+  background: var(--bg-soft); border-top: 1px solid var(--border);
+  padding: 16px 20px 22px; font-family: var(--font-mono); font-size: .88rem;
+  min-height: 90px;
+}
+.console__label{ color: var(--text-faint); font-size: .76rem; margin-bottom: 8px; }
+.console__body{ white-space: pre-wrap; color: var(--text); }
+.console__body.is-error{ color: var(--danger); }
+.console__body.is-empty{ color: var(--text-faint); }
+
+.exercise-loading, .empty-state{ padding: 60px 20px; text-align: center; color: var(--text-faint); }
+
+/* ==========================================================================
+   Toasts
+   ========================================================================== */
+.toast-stack{ position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
+.toast{
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  padding: 12px 18px; border-radius: var(--radius-s); box-shadow: var(--shadow);
+  font-size: .9rem; display: flex; align-items: center; gap: 10px;
+  animation: toast-in .25s ease;
+}
+.toast.success{ border-color: var(--signal); }
+@keyframes toast-in{ from{ opacity: 0; transform: translateY(10px);} to{ opacity: 1; transform: translateY(0);} }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer{ border-top: 1px solid var(--border); margin-top: 60px; }
+.site-footer .wrap{ padding: 26px 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .86rem; color: var(--text-faint); }
+.site-footer a{ color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover{ color: var(--accent); }
+
+/* ==========================================================================
+   Breadcrumb πάνω από τον τίτλο σελίδας εντός content pages
+   ========================================================================== */
+.page-head{ padding: 40px 0 6px; }
+.page-head .eyebrow{ font-family: var(--font-mono); font-size: .82rem; color: var(--text-faint); margin-bottom: 10px; }
+.page-head .eyebrow a{ text-decoration: none; color: var(--text-muted); }
+.page-head .eyebrow a:hover{ color: var(--accent); }
+.page-head h1{ font-size: clamp(1.7rem, 3vw, 2.3rem); }
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+.menu-toggle{ display: none; }
+
+@media (max-width: 880px){
+  .hero__grid{ grid-template-columns: 1fr; }
+  .level-grid{ grid-template-columns: 1fr; }
+  .module-grid{ grid-template-columns: 1fr; }
+  .info-grid{ grid-template-columns: 1fr; }
+  .ide{ grid-template-columns: 1fr; }
+  .ide__sidebar{ max-height: none; order: 2; }
+  .ide__main{ order: 1; }
+}
+
+@media (max-width: 640px){
+  .nav__path span.long{ display: none; }
+  .site-footer .wrap{ flex-direction: column; }
+}
