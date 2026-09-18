@@ -1,0 +1,59 @@
+{
+  "materials": [
+    {
+      "title": "Μάθημα 1",
+      "description": "Εισαγωγή στην Python",
+      "image": "assets/img/private-lesson.png",
+      "resources": {
+        "pdf": "https://drive.google.com/file/d/1c6ubwMvqfOTvmTigVxXFh6ahnavEAYDs/view?usp=sharing",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "gymnasio-material-1"
+    },
+    {
+      "title": "Μάθημα 2",
+      "description": "Βασικές Έννοιες Προγραμματισμού",
+      "image": "assets/img/private-lesson.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "gymnasio-material-2"
+    },
+    {
+      "title": "Μάθημα 3",
+      "description": "Απλές Δομές Ελέγχου",
+      "image": "assets/img/private-lesson.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "gymnasio-material-3"
+    },
+    {
+      "title": "Μάθημα 4",
+      "description": "Βασικές Συναρτήσεις και Αριθμητικές Πράξεις",
+      "image": "assets/img/private-lesson.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "gymnasio-material-4"
+    },
+    {
+      "title": "Μάθημα 5",
+      "description": "Παιχνίδια και Διαδραστικά Σενάρια",
+      "image": "assets/img/private-lesson.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "gymnasio-material-5"
+    }
+  ]
+}
