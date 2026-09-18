@@ -1,0 +1,59 @@
+{
+  "materials": [
+    {
+      "title": "Μάθημα 1",
+      "description": "Αντικειμενοστραφής Προγραμματισμός (OOP)",
+      "image": "assets/img/education.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-material-1"
+    },
+    {
+      "title": "Μάθημα 2",
+      "description": "Εφαρμογή Βιβλιοθηκών Python",
+      "image": "assets/img/education.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-material-2"
+    },
+    {
+      "title": "Μάθημα 3",
+      "description": "Διαχείριση Δεδομένων",
+      "image": "assets/img/education.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-material-3"
+    },
+    {
+      "title": "Μάθημα 4",
+      "description": "Web Development με Python",
+      "image": "assets/img/education.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-material-4"
+    },
+    {
+      "title": "Μάθημα 5",
+      "description": "Εκπαιδευτικά Projects",
+      "image": "assets/img/education.png",
+      "resources": {
+        "pdf": "https://example.com/lesson1.pdf",
+        "video": "https://example.com/lesson1.mp4",
+        "interactive": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-material-5"
+    }
+  ]
+}

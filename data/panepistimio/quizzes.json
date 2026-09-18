@@ -1,0 +1,59 @@
+{
+  "quizzes": [
+    {
+      "title": "Μάθημα 1",
+      "description": "Εισαγωγή στην Python",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "data/panepistimio/quiz_1/quiz_1.html",
+        "Quiz_2": "data/panepistimio/quiz_2/quiz_2.html",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-quizzes-1"
+    },
+    {
+      "title": "Μάθημα 2",
+      "description": "Βασικές Έννοιες Προγραμματισμού",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-quizzes-2"
+    },
+    {
+      "title": "Μάθημα 3",
+      "description": "Απλές Δομές Ελέγχου",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-quizzes-3"
+    },
+    {
+      "title": "Μάθημα 4",
+      "description": "Βασικές Συναρτήσεις και Αριθμητικές Πράξεις",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-quizzes-4"
+    },
+    {
+      "title": "Μάθημα 5",
+      "description": "Παιχνίδια και Διαδραστικά Σενάρια",
+      "image": "assets/img/quiz.png",
+      "resources": {
+        "Quiz_1": "https://example.com/lesson1.pdf",
+        "Quiz_2": "https://example.com/lesson1.mp4",
+        "Quiz_3": "https://example.com/lesson1.html"
+      },
+      "id": "panepistimio-quizzes-5"
+    }
+  ]
+}
